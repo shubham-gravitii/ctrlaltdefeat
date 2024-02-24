@@ -1,6 +1,6 @@
 "use client";
 import { useState, useContext, useEffect } from "react";
-import bgSignIn from "../assests/images/bg-home.jpg";
+import bgSignIn from "@/assests/login.svg";
 import { Checkbox } from "@/components/ui/checkbox";
 
 // import { Link, useNavigate } from "react-router-dom";
@@ -61,7 +61,7 @@ export default function SignUp() {
   });
 
   // update state based on form input changes
-  const handleChange = (event) => {
+  const handleChange = (event:any) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -71,7 +71,7 @@ export default function SignUp() {
 
   
   // submit form
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event:any) => {
     event.preventDefault();
     // setisLoading(true);
     // use try/catch instead of promises to handle errors
@@ -90,10 +90,10 @@ export default function SignUp() {
   
 
   return (
-    <div className="loginContainer">
+    <div className="loginContainer flex justify-center items-center">
       <img src={bgSignIn.src} alt="" className="bgLoginImg" />
       
-      <div className="bg-white p-5 formSignUp absolute flex flex-col justify-center  overflow-hidden  ">
+      <div className="bg-white p-5 formSignUp  flex flex-col   overflow-hidden  ">
         <div>
           <h3 className="text-3xl font-semibold text-center text-purple-700">
             Sign Up
@@ -115,7 +115,7 @@ export default function SignUp() {
                   required={true}
                   type="text"
                   name="name"
-                  value={formState.username}
+                  value={formState.name}
                   onChange={handleChange}
                   className="p-2 bg-[#f9f9f9] block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                 />
@@ -203,7 +203,7 @@ export default function SignUp() {
             <span>
               <a
                 className="text-purple-600 hover:underline cursor-pointer"
-                to="/login"
+                href="/login"
               >
                 Log in
               </a>
