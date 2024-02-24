@@ -1,0 +1,15 @@
+.bgLoginImg {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    filter: blur(0.5px);
+  }
+  .formSignUp {
+    border-radius: 20px;
+    width: 400px;
+    /* padding: 70px; */
+    backdrop-filter: blur(28px);
+    /* height: 400px; */
+    position: absolute;
+    bottom: 50px;
+  }
