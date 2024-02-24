@@ -1,40 +1,18 @@
 "use client"
-import { useState, useContext, useEffect } from "react";
-// import { useRouter } from 'next/router'
-// import { Link } from "next/link";
+import { useState } from "react";
 
-// import { useMutation } from "@apollo/client";
-// import { LOGIN } from "../utils/mutations";
-// import Auth from "../utils/auth";
 import "./Login.css";
-// import "react-toastify/dist/ReactToastify.css";
-// import AlertContext from "../Context/Alert/AlertContext";
-import bgSignIn from "../assests/images/login.svg"
-// import LoaderContext from "../Context/LoaderContext";
+
+import bgSignIn from "../assests/login.svg"
+
 
 export default function SignIn() {
-//   const router=useRouter()
 
-//   useEffect(() => {
-//     if (Auth.loggedIn()) {
-//       router.push("/dashboard");
-//     }
-//   });
-//   useEffect(() => {
-//     setisLoading(true);
-  
-//     // eslint-disable-next-line
-//   }, [])
-  
-//   const contextAlert = useContext(AlertContext);
-//   const { setnotificationMsg } = contextAlert;
-//   const context = useContext(LoaderContext);
-//   const { setisLoading } = context;
 
   const [formState, setFormState] = useState({ email: "", password: "" });
   // eslint-disable-next-line
-//   const [login, { error }] = useMutation(LOGIN);
-  const handleChange = (event) => {
+
+  const handleChange = (event:any) => {
     const { name, value } = event.target;
 
     setFormState({
@@ -42,23 +20,15 @@ export default function SignIn() {
       [name]: value,
     });
   };
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event:any) => {
     event.preventDefault();
-    setisLoading(true);
-    try {
-      const { data } = await login({
-        variables: { ...formState },
-      });
+    // setisLoading(true);
+    
 
     //   Auth.login(data.login.token);
 
     //   setnotificationMsg("Login Successfull");
-      router.push('/dashboard')
-    } catch (e) {
-      setnotificationMsg(e.message);
-
-      console.error(e.message);
-    }
+      
     // setisLoading(false);
 
     setFormState({
@@ -67,9 +37,9 @@ export default function SignIn() {
     });
   };
   return (
-    <div className="loginContainer">
+    <div className="loginContainer flex justify-center items-center">
       <img src={bgSignIn.src} alt="" className="bgLoginImg"  />
-      <div className="formLogin absolute flex flex-col justify-center  overflow-hidden ">
+      <div className="formLogin bg-white flex flex-col justify-center  ">
         <div className=" formLoginInside  w-full p-[20px] m-auto  rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-purple-700 ">
             Sign in
@@ -121,7 +91,7 @@ export default function SignIn() {
             </div>
           </form>
 
-          <p className="mt-8 text-xs font-light text-center text-white">
+          <p className="mt-8 text-xs font-light text-center text-black">
             {" "}
             Don't have an account?{" "}
             <a
