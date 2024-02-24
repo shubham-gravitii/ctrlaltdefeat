@@ -8,10 +8,57 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  username  String    @unique
-  email     String?   @unique
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  username  String     @unique
+  email     String?    @unique
   name      String
-  password  String?
-  createdAt DateTime? @default(now())
+  role      Role       @default(USER)
+  password  String
+  state     String?
+  createdAt DateTime?  @default(now())
+  Inventory Inventory?
+}
+
+model Inventory {
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  type      InventoryType
+  name      String
+  expiery   DateTime?
+  createdAt DateTime?     @default(now())
+  createdBy User?         @relation(fields: [id], references: [id])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum InventoryType {
+  SEED
+  TOOL
+}
+
+model SeedInfo {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  seedName   String
+  seedSeason String
+  seedDate   DateTime
+  state      String
+  landType   String?
+  garde      String
+}
+
+model ToolInfo {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  toolName  String
+  toolType  String
+  toolPrice Float
+  uses      String
+}
+
+model MarketInfo {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  cropName String
+  price    Float
+  quantity Int
 }
