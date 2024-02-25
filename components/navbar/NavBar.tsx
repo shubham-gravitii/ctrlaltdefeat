@@ -31,10 +31,12 @@ export default function NavBar() {
                                 <>
                                     <Link href="/dashboard">Dashboard</Link>
                                     <Link href="/additems">Add Items</Link>
+                                    <Link href="/marketplace">Marketplace</Link>
+                                    <Link href="/post">Post</Link>
                                     <Link href="/analysis">Items Analytics</Link>
                                 </>
                             }
-                            {role === 'ADMIN' && <Link href="/events">Admin</Link>}
+                            {role === 'ADMIN' && <Link href="/admin">Admin</Link>}
                             <button className={buttonVariants({ variant: 'default' })} onClick={async () => {
                                 await logout();
 

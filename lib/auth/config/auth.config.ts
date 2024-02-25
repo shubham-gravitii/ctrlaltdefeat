@@ -12,7 +12,7 @@ export const authConfig = {
 	callbacks: {
 		authorized({ auth, request: { nextUrl } }: any): boolean | Response {
 			const isLoggedIn = !!auth?.user;
-			console.log(auth);
+			// console.log(auth);
 
 			const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
 			const isPublicRoute = publicRoutes.includes(nextUrl.pathname);

@@ -25,7 +25,7 @@ const initialState = {
 export default function UpdateForm({ name, data }: { name: string, data: any }) {
     const [value, setValue] = useState(data);
     const [state, clientAction] = useFormState(updateInventory, initialState);
-    console.log(value)
+    // console.log(value)
     return (
         <Dialog>
             <DialogTrigger asChild>

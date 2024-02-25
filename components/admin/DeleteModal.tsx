@@ -14,8 +14,8 @@ export default function DeleteModal({ show, setShow }: { show: boolean, setShow:
         try {
 
             const res = { error: false, msg: "Data deleted successfully" };
-            console.log("delete");
-            console.log(res);
+            // console.log("delete");
+            // console.log(res);
 
             if (res.error) {
                 // toast.error(res.msg);

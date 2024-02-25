@@ -38,19 +38,33 @@ export default function NavMenu({ className }: { className?: string }) {
                             </SheetTrigger>
                             {user ?
                                 <>
-                                    {role === 'user' ?
-                                        <><SheetTrigger asChild>
-                                            <Link href="/dashboard" className="flex items-center p-3 text-xl hover:bg-slate-200">
-                                                <FaCalendarAlt className="inline-block mr-2" size={20} />
-                                                Dashboard
-                                            </Link>
-                                        </SheetTrigger>
+                                    {role === 'USER' ?
+                                        <>
+                                            <SheetTrigger asChild>
+                                                <Link href="/dashboard" className="flex items-center p-3 text-xl hover:bg-slate-200">
+                                                    <FaCalendarAlt className="inline-block mr-2" size={20} />
+                                                    Dashboard
+                                                </Link>
+                                            </SheetTrigger>
                                             <SheetTrigger asChild>
                                                 <Link href="/additems" className="flex items-center p-3 text-xl hover:bg-slate-200">
                                                     <MdLeaderboard className="inline-block mr-2" size={20} />
                                                     Add Items
                                                 </Link>
-                                            </SheetTrigger></>
+                                            </SheetTrigger>
+                                            <SheetTrigger asChild>
+                                                <Link href="/marketplace" className="flex items-center p-3 text-xl hover:bg-slate-200">
+                                                    <MdLeaderboard className="inline-block mr-2" size={20} />
+                                                    MarketPlace
+                                                </Link>
+                                            </SheetTrigger>
+                                            <SheetTrigger asChild>
+                                                <Link href="/post" className="flex items-center p-3 text-xl hover:bg-slate-200">
+                                                    <MdLeaderboard className="inline-block mr-2" size={20} />
+                                                    Post
+                                                </Link>
+                                            </SheetTrigger>
+                                        </>
                                         :
                                         <SheetTrigger asChild>
                                             <Link href="/admin" className="flex items-center p-3 text-xl hover:bg-slate-200">

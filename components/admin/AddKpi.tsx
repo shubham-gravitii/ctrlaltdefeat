@@ -21,7 +21,7 @@ export default function AddKpiForm({ kpiType }: { kpiType: string }) {
             name: formData.get("name"),
             email: formData.get("yaxis"),
         }
-        console.log(newKpi);
+        // console.log(newKpi);
     }
 
     return (

@@ -7,13 +7,23 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css'
+import { useCurrentUser } from '@/hooks/use-current-user';
+import { addInventory } from '@/lib/actions/inventory.action';
+import { InventoryType } from '@prisma/client';
 export default function AddItems() {
+    const user=useCurrentUser()
+    console.log(user)
+    if(!user){
+        return;
+    }
     const [isLoading, setisLoading] = useState(false)
     const initialFormState = {
         "type": "",
         "name": "",
-        "date": new Date(),
-        "quantity": ""
+        "expiery": new Date(),
+        "quantity": "0",
+        "url": "images.jpg",
+        "createdById": user?.id || "65dabc6567f5c770a394eb2b"
     }
     const [formState, setFormState] = useState(initialFormState)
     const handleChange = (e: any) => {
@@ -21,21 +31,24 @@ export default function AddItems() {
         if (name === "type") {
             setFormState({
                 ["type"]: value, "name": "",
-                "date": new Date(),
-                "quantity": ""
+                "expiery": new Date(),
+                "quantity": "0",
+                "url": "images.jpg",
+                "createdById": user?.id || "65dabc6567f5c770a394eb2b"
             })
         }
         else {
             setFormState({ ...formState, [name]: value });
         }
     }
-    const handleFormSubmit = (e: any) => {
+    const handleFormSubmit = async(e: any) => {
         e.preventDefault()
         setisLoading(true)
-        
+        const inventory = await addInventory({...formState,type: 'crop'?"SEED":"TOOL", quantity:parseInt(formState.quantity), expiery: formState.expiery.toISOString()})
+        console.log(formState)
         // toast("succesfully")
         // console.log(formState)
-        // setisLoading(false)
+        setisLoading(false)
     }
     return (
         <>
@@ -122,7 +135,7 @@ export default function AddItems() {
                                                     Date of purchase
                                                 </label>
                                                 <div className="flex flex-col items-start">
-                                                    <DatePicker selected={formState.date} onChange={handleChange} name="date" className="p-2 " />
+                                                    <DatePicker selected={formState.expiery} onChange={handleChange} name="date" className="p-2 " />
 
                                                     {/* <input
                                  placeholder="Enter your email"
@@ -172,7 +185,7 @@ export default function AddItems() {
                                                     Name of the tool
                                                 </label>
                                                 <input
-                                                    placeholder={`Enter tool's name`}
+                                                    placeholder={"Enter tool's name"}
                                                     required={true}
                                                     type="text"
                                                     name="name"
@@ -189,7 +202,7 @@ export default function AddItems() {
                                                     Date of purchase
                                                 </label>
                                                 <div className="flex flex-col items-start">
-                                                    <DatePicker selected={formState.date} onChange={handleChange} name="date" className="p-2 " />
+                                                    <DatePicker selected={formState.expiery} onChange={handleChange} name="date" className="p-2 " />
 
                                                     {/* <input
                                      placeholder="Enter your email"

@@ -10,6 +10,7 @@ interface addInventoryParams {
 	expiery: DateTime;
 	url: string;
 	type: InventoryType;
+    quantity: number;
 	createdById: string;
 }
 
@@ -18,6 +19,7 @@ export async function addInventory({
 	expiery,
 	url,
 	type,
+    quantity,
 	createdById,
 }: addInventoryParams): Promise<any> {
 	try {
@@ -27,10 +29,12 @@ export async function addInventory({
 				expiery,
 				url,
 				type,
+                quantity,
 				createdById,
 				createdAt: new Date(),
 			},
 		});
+        revalidatePath('(protected)/dashboard')
 		return JSON.stringify({
 			error: false,
 			msg: "success",
@@ -44,13 +48,16 @@ export async function addInventory({
 }
 
 export async function fetchInventory({
+    userId,
 	InventoryType,
 }: {
+    userId: string
 	InventoryType: InventoryType;
 }) {
 	try {
 		const foundInventory = await prisma.inventory.findMany({
 			where: {
+                createdById: userId,
 				type: InventoryType,
 			},
 		});
@@ -130,6 +137,7 @@ export async function updateInventory(
 				type: formData.get("type") as InventoryType,
 				expiery: formData.get("expiry") as DateTime,
 				url: "http/image.png",
+                quantity: formData.get("quantity") as unknown as number
 			},
 		});
 		revalidatePath("(protected)/admin");

@@ -1,9 +1,7 @@
-
 import "./styles.css";
 const Home = () => {
   return (
     <>
-
       <div className="container">
         <section className="hero w-120">
           <div className="hero__content">
@@ -12,9 +10,9 @@ const Home = () => {
                 A New Way to Invest in Agriculture
               </h1>
               <p className="hero__description">
-                Zou provides farmes, ranchers, private foresters, and
-                agricultural producers with online self service applications and
-                educational materials.
+                Agrotech provides the system with an intelligent
+                inventory management solution for seeds and tools required for
+                farming.
               </p>
             </div>
             <div className="hero__img">
@@ -36,7 +34,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
 
         <section className="flex items-center py-10 bg-stone-100 xl:h-screen font-poppins dark:bg-gray-800">
           <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">

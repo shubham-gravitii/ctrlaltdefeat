@@ -19,7 +19,7 @@ const landTypes = ["Alluvial soils", "Black soils", "Red soils", "Laterite soils
 export default function page() {
 
     const [state, clientAction] = useFormState(inventoryAnalysis, initialState);
-    console.log(state);
+    // console.log(state);
 
     return (
         <div>

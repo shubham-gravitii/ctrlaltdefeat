@@ -24,6 +24,7 @@ model Inventory {
   type        InventoryType
   url         String
   name        String
+  quantity    Int?
   expiery     DateTime?
   createdAt   DateTime?     @default(now())
   createdBy   User?         @relation(fields: [id], references: [id])
