@@ -6,12 +6,11 @@
 }
 .formSignUp {
   border-radius: 20px;
-  width: 400px;
+  width: 500px;
   /* padding: 70px; */
   backdrop-filter: blur(28px);
   /* height: 400px; */
   position: absolute;
-  bottom: 50px;
 }
 .parentLoader {
   display: flex;

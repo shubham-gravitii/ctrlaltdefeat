@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/actions/inventory.action.ts", "components/navbar/Navbar.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/actions/inventory.action.ts", "components/navbar/Navbar.jsx", "app/(protected)/additems"],
   "exclude": ["node_modules"]
 }

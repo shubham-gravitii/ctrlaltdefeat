@@ -1,19 +1,16 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
-// import { useSession } from 'next-auth/react';
-// import { redirect } from 'next/navigation';
-
+import { logout } from '@/lib/actions/auth.action';
 
 //chang a to Navlink
 const Header = () => {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
   //context
   // const { isLoggedIn } = useAuth();
-  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [isLoggedIn, setisLoggedIn] = useState(true);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -39,21 +36,11 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-
-  // const { data: session } = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect('/')
-  //   }
-  // });
-
-  // console.log(session?.user);
-
   return (
     <header className="header full f1 bod htm" id="header">
       <nav className="navbar container">
         <a href="/" className="brand">
-          Brand
+          AgroTech
         </a>
 
         <div
@@ -63,11 +50,21 @@ const Header = () => {
         >
           <ul className="menu-inner">
             {isLoggedIn ? (
-              <li className="menu-item">
-                <a href="/logout" className="menu-link" onClick={closeMenu}>
-                  LogOut
-                </a>
-              </li>
+              <>
+                <li className="menu-item">
+                  <a href="/dashboard" className="menu-link" onClick={closeMenu}>
+                    Dashboard
+                  </a>
+                </li>
+                <li className="menu-item">
+                  <a href="#" className="menu-link" onClick={async()=>{
+                    closeMenu();
+                    await logout();
+                  }}>
+                    LogOut
+                  </a>
+                </li>
+              </>
             ) : (
               <>
                 <li className="menu-item">
