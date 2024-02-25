@@ -38,7 +38,8 @@ const Board = async () => {
               <Card
                 key={item.id}
                 inventoryId={item.id}
-                imgsrc={`${images[item.name]?.src}`}
+                // imgsrc={`${images[item.name]?.src}`}
+                imgsrc={`/images/${item.name}.jpeg`}
                 name={item.name}
                 type={item.type}
                 expiry={item.expiery.toString().substr(0, 10)}
@@ -57,7 +58,7 @@ const Board = async () => {
                 <Card
                 key={item.id}
                 inventoryId={item.id}
-                imgsrc={`${images[item.name]?.src}`}
+                imgsrc={`/images/${item.name}.jpeg`}
                   
                   name={item.name}
                   type={item.type}
