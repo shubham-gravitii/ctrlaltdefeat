@@ -1,7 +1,8 @@
-import LoginForm from "@/components/Login";
-import AddItems from '../../../components/AddItems'
+import Login from "@/components/Login";
+
+
 export default function page() {
     return (
-        <LoginForm />
+        <Login />
     )
 }

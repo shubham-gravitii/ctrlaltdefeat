@@ -1,8 +1,9 @@
-import RegisterForm from "@/components/SignUp"
+import RegisterForm from "@/components/RegisterForm"
+import SignUp from "@/components/SignUp"
 
 const Register = () => {
     return (
-        <RegisterForm />
+        <SignUp />
     )
 }
 

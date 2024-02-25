@@ -1,15 +1,22 @@
+"use client"
 import Link from "next/link";
-import Image from "next/image";
 import { buttonVariants } from "../ui/button";
 import NavMenu from "./NavMenu";
-// import { ThemeSwitcher } from "./ThemeSwitcher";
+import { useCurrentRole } from "@/hooks/use-current-role";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { logout } from '@/lib/actions/auth.action';
 
 
 
-export default async function NavBar() {
-    
+export default function NavBar() {
+    const role = useCurrentRole()
+    const user = useCurrentUser()
+    // const role = 'user'
+    // const user = 'l'
+    // console.log(role, user);
+
     return (
-        <nav className="w-full shadow-md relative ">
+        <nav className="w-full shadow-md relative z-10">
             <div className="py-3 sm:px-10 px-3 flex mob:flex-col m-auto justify-between items-center">
                 <Link
                     href={"/"}
@@ -17,13 +24,27 @@ export default async function NavBar() {
                 >
                     AgroTech
                 </Link>
-                <div className="hidden lg:flex justify-center items-center space-x-1 sm:space-x-5">
-                    <Link href="/">Dashboard</Link>
-                    <Link href="/events">Admin</Link>
-                    <Link href="/admin" className={buttonVariants({ variant: 'default' })}>Register</Link>
-                    <Link href="/admin" className={buttonVariants({ variant: 'default' })}>Login</Link>
+                <div className="hidden font-semibold lg:flex justify-center items-center space-x-1 sm:space-x-5">
+                    {user ?
+                        <>
+                            {role === 'USER' &&
+                                <>
+                                    <Link href="/dashboard">Dashboard</Link>
+                                    <Link href="/additems">Add Items</Link>
+                                    <Link href="/analysis">Items Analytics</Link>
+                                </>
+                            }
+                            {role === 'ADMIN' && <Link href="/events">Admin</Link>}
+                            <button className={buttonVariants({ variant: 'default' })} onClick={async () => {
+                                await logout();
 
-                    {/* <Link href="#"><ThemeSwitcher /></Link> */}
+                            }}>Logout</button>
+                        </>
+                        :
+                        <>
+                            <Link href="/register" className={buttonVariants({ variant: 'default' })}>Register</Link>
+                            <Link href="/login" className={buttonVariants({ variant: 'default' })}>Login</Link>
+                        </>}
                 </div>
                 <NavMenu className="lg:hidden" />
             </div>

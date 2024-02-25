@@ -57,7 +57,7 @@ export default function SignUp() {
   return (
     <>
 
-      <div className="loginContainer flex justify-center items-center ">
+      <div className="flex justify-center items-center ">
         <ToastContainer
           position="top-center"
           autoClose={5000}

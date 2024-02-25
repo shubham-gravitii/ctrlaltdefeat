@@ -4,6 +4,7 @@
   object-fit: cover;
   filter: blur(0.5px);
 }
+
 .formSignUp {
   border-radius: 20px;
   width: 500px;
@@ -11,13 +12,16 @@
   backdrop-filter: blur(28px);
   /* height: 400px; */
   position: absolute;
+  bottom: -10px;
 }
+
 .parentLoader {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+
 .loader {
   width: 48px;
   height: 48px;
@@ -33,6 +37,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
