@@ -74,6 +74,7 @@ export async function fetchUniqueInventory({ inventoryId }: { inventoryId: strin
 
 export async function deleteInventory({ inventoryId}: {inventoryId: string}){
     try {
+        console.log(inventoryId)
         await prisma.inventory.delete({
             where: {
                 id: inventoryId
