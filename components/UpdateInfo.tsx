@@ -24,17 +24,17 @@ const initialState = {
 
 export default function UpdateForm({ name, data }: { name: string, data: any }) {
     const [value, setValue] = useState(data);
-    const [state, clientAction] = useFormState(updateInventory,initialState);
+    const [state, clientAction] = useFormState(updateInventory, initialState);
     console.log(value)
     return (
         <Dialog>
             <DialogTrigger asChild>
-            <button
+                <button
                     type="button"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  >
+                >
                     Update
-                  </button>
+                </button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -52,7 +52,7 @@ export default function UpdateForm({ name, data }: { name: string, data: any }) 
                         required
                     />
 
-                  <section className="w-full">
+                    <section className="w-full">
                         <label htmlFor="toolName">Seed Name:</label>
                         <Input
                             type='text'
