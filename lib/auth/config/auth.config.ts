@@ -18,14 +18,10 @@ export const authConfig = {
 			const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
 			const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-			console.log(2);
 			if (isApiAuthRoute) return true;
 
-			console.log(3);
 			if (isAuthRoute) {
-				console.log(4);
 				if (isLoggedIn) {
-					console.log(5);
 					return Response.redirect(
 						new URL(DEFAULT_LOGIN_REDIRECT, nextUrl)
 					);

@@ -31,51 +31,70 @@ const initialState = {
     message: '',
 }
 
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const states = ["Bihar", "Gujarat", "Maharashtra", "Punjab", "Tamil Nadu"]
+const landTypes = ["Alluvial soils", "Black soils", "Red soils", "Laterite soils"]
+
 
 export function AddSeedInfoForm() {
     const [state, clientAction] = useFormState(addSeed, initialState);
     return (
-        <form className="flex flex-col gap-6 mt-6" action={clientAction}>
-            <div className="flex flex-col md:flex-row gap-6 justify-between">
-                <section className="w-full md:w-1/2">
-                    <label htmlFor="seedName">Seed Name:</label>
-                    <Input type='text' placeholder="Enter title of Seed" name="seedName" required />
-                </section>
-                <section className="w-full md:w-1/2">
-                    <label htmlFor="seedSeason">Seed Season:</label>
-                    <Input type='text' placeholder="Enter title of Seed Season" name="seedSeason" required />
-                </section>
+        <form className="grid grid-cols-2 gap-6 mt-6" action={clientAction}>
+            <section className="w-full grid gap-2">
+                <label htmlFor="seedName">Seed Name:</label>
+                <Input type='text' placeholder="Enter title of Seed" name="seedName" required />
+            </section>
 
+
+            {/* <div className="w-full md:w-1/2"> */}
+            <div className="w-full grid gap-2">
+                <label htmlFor="seedSeason">Month for Planting:</label>
+                <select name="seedSeason" id="seedSeason" className="border-2 border-slate-200 rounded-md py-2">
+                    <option value="">--SELECT--</option>
+                    {
+                        months.map((month, index) => (
+                            <option key={index} value={month}>{month}</option>
+                        ))
+                    }
+                </select>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6 justify-between">
-                <section className="w-full md:w-1/2">
-                    <label htmlFor="seedDate">Seed Date:</label>
-                    <Input type="date" name='seedDate' required />
-                </section>
+            <section className="w-full grid gap-2">
+                <label htmlFor="state">State:</label>
+                <select name="state" id="state" className="border-2 border-slate-200 rounded-md py-2">
+                    <option value="">--SELECT--</option>
+                    {
+                        states.map((state, index) => (
+                            <option key={index} value={state}>{state}</option>
+                        ))
+                    }
+                </select>
+            </section>
+            {/* </div> */}
 
-                <section className="w-full md:w-1/2">
-                    <label htmlFor="state">State:</label>
-                    <Input type="text" name='state' required />
-                </section>
+            {/* <div className="flex flex-col md:flex-row gap-6 justify-between"> */}
+            <section className="w-full grid gap-2">
+                <label htmlFor="landType">Soil Type:</label>
+                <select name="landType" id="landType" className="border-2 border-slate-200 rounded-md py-2">
+                    <option value="">--SELECT--</option>
+                    {
+                        landTypes.map((landType, index) => (
+                            <option key={index} value={landType}>{landType}</option>
+                        ))
+                    }
+                </select>
+            </section>
 
-                {/* <section className="w-full md:w-1/2">
-                    <label htmlFor="imgUrl">state:</label>
-                    <Input type='file' accept='.jpg, .png' name="img" required />
-                </section> */}
-            </div>
+            <section className="w-full">
+                <label htmlFor="garde">garde(1-10):</label>
+                <Input type="number" name='garde' required />
+            </section>
 
-            <div className="flex flex-col md:flex-row gap-6 justify-between">
-                <section className="w-full md:w-1/2">
-                    <label htmlFor="landType">Land Type:</label>
-                    <Input type="text" name='landType' required />
-                </section>
-
-                <section className="w-full md:w-1/2">
-                    <label htmlFor="garde">garde:</label>
-                    <Input type="text" name='garde' required />
-                </section>
-            </div>
+            <section className="w-full">
+                <label htmlFor="seedDate">Expiry Date(in months):</label>
+                <Input type="number" name='seedDate' required />
+            </section>
+            {/* </div> */}
             {
                 state?.error &&
                 <div className='flex gap-4 p-4 mt-6 mx-auto bg-red-200 rounded-sm'>
