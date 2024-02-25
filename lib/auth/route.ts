@@ -1,8 +1,5 @@
 export const publicRoutes = [
     '/',
-    '/events',
-    '/team',
-    '/leaderboard',
 ]
 
 export const authRoutes = [

@@ -1,14 +1,7 @@
-import Login1 from '../../../components/Login'
-import SignUp from '../../../components/SignUp'
-import Dashboard from '../../../components/Dashboard'
-import AddItems from '../../../components/AddItems'
-const Login = () => {
+import LoginForm from "@/components/LoginForm";
+
+export default function page() {
     return (
-        <>
-            <Login1 />
-            
-        </>
+        <LoginForm />
     )
 }
-
-export default Login

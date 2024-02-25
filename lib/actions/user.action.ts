@@ -48,20 +48,20 @@ export async function addUser({
 
 
 export async function fetchUser({ userId }: { userId: string }) {
-    try {
-        const foundUser = await prisma.user.findUnique({
-            where: {
-                id: userId,
-            },
-        });
+	try {
+		const foundUser = await prisma.user.findUnique({
+			where: {
+				id: userId,
+			},
+		});
 
-        revalidatePath("/(root)/users", "page");
+		revalidatePath("/(root)/users", "page");
 
-        return JSON.parse(JSON.stringify(foundUser));
-    } catch (e: any) {
-        return JSON.stringify({
-            error: true,
-            msg: e.message,
-        });
-    }
+		return JSON.parse(JSON.stringify(foundUser));
+	} catch (e: any) {
+		return JSON.stringify({
+			error: true,
+			msg: e.message,
+		});
+	}
 }
