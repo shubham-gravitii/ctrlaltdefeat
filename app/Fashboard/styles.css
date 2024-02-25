@@ -2,9 +2,9 @@
 
 /* Centering the entire board */
 .bod {
-    background-image: url('../../public/back.jpg');
+    /* background-image: url('../../public/back.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     padding: 40px 0;
     display: flex;
     flex-direction: column;

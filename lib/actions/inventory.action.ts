@@ -3,6 +3,7 @@
 import { DateTime } from "next-auth/providers/kakao";
 import { prisma } from "../prisma";
 import { InventoryType } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 interface addInventoryParams {
 	name: string;
@@ -94,21 +95,22 @@ export async function deleteInventory({ inventoryId}: {inventoryId: string}){
     }
 }
 
-export async function updateInventory({ inventoryId,data}: {inventoryId: string,data: DateTime}){
+export async function updateInventory(_: any, formData: FormData): Promise<any>{
     try {
-        const updatedInventory = await prisma.inventory.update({
-            where: {
-                id: inventoryId
-            },
-            data:{
-            expiery: data
-            }
-        });
+        await prisma.inventory.create({
+			data: {
+				name: formData.get("name") as string,
+				type: formData.get("type") as InventoryType,
+				expiery: formData.get("expiry") as string,
+				url: "http/image.png",
+                
+			},
+		});
+		revalidatePath("(protected)/admin");
 
         return JSON.stringify({
             error: false,
             msg: "Inventory updated successfully",
-            updatedInventory: updatedInventory
         });
         
     } catch (e: any) {

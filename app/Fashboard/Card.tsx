@@ -1,7 +1,8 @@
 'use client'
 import React from "react";
 import "./styles.css";
-import { deleteInventory } from "@/lib/actions/inventory.action";
+import { deleteInventory} from "@/lib/actions/inventory.action";
+import UpdateForm from "@/components/UpdateInfo";
 
 interface CardProps{
   imgsrc: string,
@@ -16,9 +17,6 @@ const Card: React.FC<CardProps>=({ imgsrc, name, type, expiry,inventoryId })=> {
       const response = await deleteInventory({ inventoryId: inventoryId })
       console.log(response)
 
-   }
-   const handleUpdate=async()=>{
-    
    }
   return (
     <div className="bod">
@@ -48,15 +46,7 @@ const Card: React.FC<CardProps>=({ imgsrc, name, type, expiry,inventoryId })=> {
                     Delete
                   </button>
                 </a>
-                <a href="#">
-                  <button
-                    type="button"
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    onClick={handleUpdate}
-                  >
-                    Update
-                  </button>
-                </a>
+                <UpdateForm name={name} data={{expiry,inventoryId,name, type,}} />
               </div>
             </div>
           </article>
