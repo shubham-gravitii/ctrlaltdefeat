@@ -4,7 +4,8 @@ import bgSignIn from "@/assests/login.svg";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { registerWithCredentials } from '@/lib/actions/auth.action';
+import { useFormState } from 'react-dom';
 // import { Link, useNavigate } from "react-router-dom";
 // import { useMutation } from "@apollo/client";
 // import { ADD_USER } from "../utils/mutations";
@@ -46,41 +47,10 @@ export default function SignUp() {
     { name: "state", label: "West Bengal", value: "West Bengal" },
   ];
   const [showPassword, setshowPassword] = useState(false);
-  //   const navigate = useNavigate();
-  //   useEffect(() => {
-  //     if (Auth.loggedIn()) {
-  //       navigate("/");
-  //     }
-  //   });
-  //   const context = useContext(AlertContext);
-  //   const { setnotificationMsg } = context;
-  //   const context1 = useContext(LoaderContext);
-  //   const { setisLoading } = context1;
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    password: "",
-    state: "",
-  });
-
-  // update state based on form input changes
-  const handleChange = (event: any) => {
-    const { name, value } = event.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-
-  // submit form
-  const handleFormSubmit = async (event: any) => {
-    event.preventDefault();
-    setisLoading(true);
-    // toast("success")
-    setisLoading(false);
-  };
-
+ 
+ 
+  const [registerData, setRegisterData] = useState({ name: '', email: '', state: '', password: '',username:"" })
+  const [message, clientAction] = useFormState(registerWithCredentials, undefined)
 
   return (
     <>
@@ -111,7 +81,7 @@ export default function SignUp() {
               </h3>
             </div>
             <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-[#efefef] shadow-md sm:max-w-lg sm:rounded-lg">
-              <form className="p-3">
+              <form action={clientAction} className="p-3">
                 <div>
                   <label
                     htmlFor="name"
@@ -126,8 +96,28 @@ export default function SignUp() {
                       required={true}
                       type="text"
                       name="name"
-                      value={formState.name}
-                      onChange={handleChange}
+                      value={registerData.name}
+                      onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })}
+                      className="p-2 bg-[#f9f9f9] block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-md font-medium text-gray-700 undefined"
+                  >
+                    Username
+                  </label>
+                  <div className="flex flex-col items-start">
+
+                    <input
+                      placeholder="Enter your Full Name"
+                      required={true}
+                      type="text"
+                      name="username"
+                      value={registerData.username}
+                      onChange={(e) => setRegisterData({ ...registerData, username: e.target.value })}
                       className="p-2 bg-[#f9f9f9] block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                     />
                   </div>
@@ -140,8 +130,8 @@ export default function SignUp() {
                     State
                   </label>
                   <select
-                    value={formState.state}
-                    onChange={handleChange}
+                    value={registerData.state}
+                    onChange={(e) => setRegisterData({ ...registerData, state: e.target.value })}
                     name="state"
                     className="block w-full px-4 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                   >
@@ -166,8 +156,8 @@ export default function SignUp() {
                       required={true}
                       type="email"
                       name="email"
-                      value={formState.email}
-                      onChange={handleChange}
+                      value={registerData.email}
+                      onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
                       className="p-2 bg-[#f9f9f9] block w-full mt-1 border-gray-500 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                     />
                   </div>
@@ -184,8 +174,8 @@ export default function SignUp() {
                       placeholder="Enter your password"
                       required={true}
                       type={showPassword ? "text" : "password"}
-                      onChange={handleChange}
-                      value={formState.password}
+                      onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })}
+                      value={registerData.password}
                       name="password"
                       className="p-2 block w-full bg-[#f9f9f9] mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                     />
@@ -202,7 +192,7 @@ export default function SignUp() {
 
                 <div className="flex items-center mt-4">
                   <button
-                    onClick={handleFormSubmit}
+                    type="submit"
                     className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
                   >
                     Register

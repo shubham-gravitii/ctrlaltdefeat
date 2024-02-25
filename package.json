@@ -1,5 +1,5 @@
 {
-  "name": "cltraltdefeat",
+	"name": "cltraltdefeat",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -9,15 +9,14 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-     "@hookform/resolvers": "^3.3.4",
-    "@radix-ui/react-checkbox": "^1.0.4",
-    "@radix-ui/react-slot": "^1.0.2",
-    "react-datepicker": "^6.1.0",
-    "react-hook-form": "^7.50.1",
-    "react-toastify": "^10.0.4",
+		"@hookform/resolvers": "^3.3.4",
+		"@radix-ui/react-checkbox": "^1.0.4",
+		"@radix-ui/react-slot": "^1.0.2",
+		"react-datepicker": "^6.1.0",
+		"react-hook-form": "^7.50.1",
+		"react-toastify": "^10.0.4",
 		"@auth/prisma-adapter": "^1.4.0",
 		"@prisma/client": "^5.10.2",
-		"@radix-ui/react-checkbox": "^1.0.4",
 		"@radix-ui/react-dialog": "^1.0.5",
 		"@radix-ui/react-label": "^2.0.2",
 		"@radix-ui/react-tabs": "^1.0.4",

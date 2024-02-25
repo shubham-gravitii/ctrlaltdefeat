@@ -10,6 +10,7 @@ export default function LoginForm() {
 
     const [loginData, setLoginData] = useState({ email: '', password: '' })
     const [message, clientAction] = useFormState(loginWithCredentials, undefined)
+    
     return (
         <div className="flex flex-col h-[90vh] w-full">
             <form action={clientAction} className="flex flex-col items-center m-auto justify-center w-full max-w-md">
