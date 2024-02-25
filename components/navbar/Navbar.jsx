@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
-// import { useSession } from 'next-auth/react';
-// import { redirect } from 'next/navigation';
 
 
 //chang a to Navlink
@@ -39,15 +37,6 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-
-  // const { data: session } = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect('/')
-  //   }
-  // });
-
-  // console.log(session?.user);
 
   return (
     <header className="header full f1 bod htm" id="header">
