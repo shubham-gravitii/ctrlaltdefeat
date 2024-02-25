@@ -3,7 +3,7 @@
 import { loginWithCredentials } from '@/lib/actions/auth.action'
 import { useState } from 'react'
 import { useFormState } from 'react-dom'
-import Button from './Button'
+import Button from './SubmitButton'
 import { BiSolidError } from "react-icons/bi"
 
 export default function LoginForm() {

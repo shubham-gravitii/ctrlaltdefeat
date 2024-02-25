@@ -20,13 +20,13 @@ model User {
 }
 
 model Inventory {
-  id        String        @id @default(auto()) @map("_id") @db.ObjectId
-  type      InventoryType
-  url       String
-  name      String
-  expiery   DateTime?
-  createdAt DateTime?     @default(now())
-  createdBy User?         @relation(fields: [id], references: [id])
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  type        InventoryType
+  url         String
+  name        String
+  expiery     DateTime?
+  createdAt   DateTime?     @default(now())
+  createdBy   User?         @relation(fields: [id], references: [id])
   createdById String?
 }
 
@@ -41,10 +41,10 @@ enum InventoryType {
 }
 
 model SeedInfo {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
   seedName   String
   seedSeason String
-  seedDate   DateTime
+  seedDate   String
   state      String
   landType   String?
   garde      String

@@ -1,4 +1,3 @@
-import EventForm from '../EventForm'
 import {
     Card,
     CardContent,
@@ -7,27 +6,33 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import ModifyEvents from './ModifyEvents';
+import { AddToolInfoForm, ModifyToolInfo } from "./ToolsInfoHelper";
+import { fetchTools } from "@/lib/actions/tool.action";
 
-export default function ToolsInfo() {
+
+
+export default async function ToolsInfo() {
+    // fetch tools info
+    const tools: any[] = await fetchTools();
+
     return (
         <Card>
             <Tabs defaultValue="home">
                 <CardHeader className='flex flex-row justify-between'>
                     <div>
-                        <CardTitle className='text-lg md:text-xl'>Events</CardTitle>
+                        <CardTitle className='text-lg md:text-xl'>Tool Information</CardTitle>
                         <CardDescription>
-                            Manage events on the website
+                            Manage Tool Information on the website
                         </CardDescription>
                     </div>
                     <TabsList className="flex justify-center">
-                        <TabsTrigger value="home">Events</TabsTrigger>
-                        <TabsTrigger value="add-event">Add Event</TabsTrigger>
+                        <TabsTrigger value="home">Tools</TabsTrigger>
+                        <TabsTrigger value="add-event">Add Tools</TabsTrigger>
                     </TabsList>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                    <TabsContent value="home"><ModifyEvents /></TabsContent>
-                    <TabsContent value="add-event"><EventForm /></TabsContent>
+                    <TabsContent value="home"><ModifyToolInfo tools={tools} /></TabsContent>
+                    <TabsContent value="add-event"><AddToolInfoForm /></TabsContent>
                 </CardContent>
             </Tabs>
         </Card >

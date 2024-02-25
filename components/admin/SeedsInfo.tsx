@@ -1,4 +1,3 @@
-import EventForm from '../EventForm'
 import {
     Card,
     CardContent,
@@ -6,10 +5,13 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import ModifyEvents from './ModifyEvents';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AddSeedInfoForm, ModifySeedInfo } from './SeedsInfoHelper';
+import { fetchSeeds } from '@/lib/actions/seed.action';
 
-export default function SeedsInfo() {
+export default async function SeedsInfo() {
+    // fetch seeds info
+    const seeds: any[] = await fetchSeeds();
     return (
         <Card>
             <Tabs defaultValue="home">
@@ -21,13 +23,13 @@ export default function SeedsInfo() {
                         </CardDescription>
                     </div>
                     <TabsList className="flex justify-center">
-                        <TabsTrigger value="home">Events</TabsTrigger>
-                        <TabsTrigger value="add-event">Add Event</TabsTrigger>
+                        <TabsTrigger value="home">Seeds</TabsTrigger>
+                        <TabsTrigger value="add-event">Add Seeds</TabsTrigger>
                     </TabsList>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                    <TabsContent value="home"><ModifyEvents /></TabsContent>
-                    <TabsContent value="add-event"><EventForm /></TabsContent>
+                    <TabsContent value="home"><ModifySeedInfo seeds={seeds} /></TabsContent>
+                    <TabsContent value="add-event"><AddSeedInfoForm /></TabsContent>
                 </CardContent>
             </Tabs>
         </Card >

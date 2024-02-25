@@ -35,7 +35,7 @@ export default function Login() {
           <button />
           {message?.error && (
             <div className='flex gap-4 p-4 mt-6 bg-red-200 rounded-sm'>
-              <BiSolidError className="h-5 w-5 text-red-500" />
+              {/* <BiSolidError className="h-5 w-5 text-red-500" /> */}
               <p className="text-sm text-red-500">{message.message}</p>
             </div>
           )}

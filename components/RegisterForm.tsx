@@ -1,7 +1,7 @@
 'use client'
 
 import { registerWithCredentials } from '@/lib/actions/auth.action';
-import Button from './Button';
+import Button from './SubmitButton';
 import { useState } from 'react';
 import { useFormState } from 'react-dom';
 import { BiSolidError } from "react-icons/bi"

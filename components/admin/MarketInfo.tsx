@@ -1,4 +1,3 @@
-import EventForm from '../EventForm'
 import {
     Card,
     CardContent,
@@ -6,10 +5,13 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import ModifyEvents from './ModifyEvents';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AddMarketInfoForm, ModifyMarketInfo } from "./MarketInfoHelper";
+import { fetchMarkets } from "@/lib/actions/market.action";
 
-export default function MarketInfo() {
+export default async function MarketInfo() {
+    // fetch market info
+    const datas: any[] = await fetchMarkets();
     return (
         <Card>
             <Tabs defaultValue="home">
@@ -21,13 +23,13 @@ export default function MarketInfo() {
                         </CardDescription>
                     </div>
                     <TabsList className="flex justify-center">
-                        <TabsTrigger value="home">Events</TabsTrigger>
-                        <TabsTrigger value="add-event">Add Event</TabsTrigger>
+                        <TabsTrigger value="home">Market</TabsTrigger>
+                        <TabsTrigger value="add-event">Add Market</TabsTrigger>
                     </TabsList>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                    <TabsContent value="home"><ModifyEvents /></TabsContent>
-                    <TabsContent value="add-event"><EventForm /></TabsContent>
+                    <TabsContent value="home"><ModifyMarketInfo datas={datas} /></TabsContent>
+                    <TabsContent value="add-event"><AddMarketInfoForm /></TabsContent>
                 </CardContent>
             </Tabs>
         </Card >
