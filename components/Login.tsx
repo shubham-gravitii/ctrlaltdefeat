@@ -4,7 +4,6 @@ import { useFormState } from "react-dom";
 import { loginWithCredentials } from '@/lib/actions/auth.action';
 import "./Login.css";
 
-
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
   const [message, clientAction] = useFormState(loginWithCredentials, undefined);
