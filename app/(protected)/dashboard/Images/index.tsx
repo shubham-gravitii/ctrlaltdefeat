@@ -1,0 +1,11 @@
+import wheat from './wheat1.jpeg'
+import barley from './barley.jpeg'
+import gram from './gram.jpeg'
+import linseed from './linseed.jpeg'
+import maize from './maize.jpeg'
+import mustard from './mustard.jpeg'
+import oats from './oats.jpeg'
+import rice from './rice.jpeg'
+import tractor from './tractor.png'
+import harvester from './harvestor.jpg'
+export default {wheat ,barley,gram,linseed,maize,mustard,oats,rice , tractor,harvester};

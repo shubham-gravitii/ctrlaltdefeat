@@ -9,7 +9,8 @@ interface CardProps {
   name: string,
   inventoryId: string,
   type: string,
-  expiry: string
+  expiry: string,
+  quantity:number
 }
 
 const Card: React.FC<CardProps> = ({ imgsrc, name, type, expiry, inventoryId }) => {
@@ -27,11 +28,13 @@ const Card: React.FC<CardProps> = ({ imgsrc, name, type, expiry, inventoryId }) 
               src={imgsrc}
               alt="Sample photo"
               style={{
-                width: "100% !important",
+                width: "100%",
+                height: "200px",
+
               }}
             />
-            <div className="text">
-              <div>
+            <div className="text ">
+              <div className="flex flex-col justify-center ml-5">
                 <h3>Name: {name}</h3>
                 <h3>Type: {type}</h3>
                 <h3>Expiry: {expiry}</h3>

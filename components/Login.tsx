@@ -12,10 +12,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
   const [message, clientAction] = useFormState(loginWithCredentials, undefined);
-
-
-
-
   return (
     <>
 
