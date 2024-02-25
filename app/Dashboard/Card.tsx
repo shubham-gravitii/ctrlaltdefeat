@@ -1,10 +1,10 @@
 'use client'
 import React from "react";
 import "./styles.css";
-import { deleteInventory} from "@/lib/actions/inventory.action";
+import { deleteInventory } from "@/lib/actions/inventory.action";
 import UpdateForm from "@/components/UpdateInfo";
 
-interface CardProps{
+interface CardProps {
   imgsrc: string,
   name: string,
   inventoryId: string,
@@ -12,12 +12,12 @@ interface CardProps{
   expiry: string
 }
 
-const Card: React.FC<CardProps>=({ imgsrc, name, type, expiry,inventoryId })=> {
-   const handleDelete=async()=>{
-      const response = await deleteInventory({ inventoryId: inventoryId })
-      console.log(response)
+const Card: React.FC<CardProps> = ({ imgsrc, name, type, expiry, inventoryId }) => {
+  const handleDelete = async () => {
+    const response = await deleteInventory({ inventoryId: inventoryId })
+    console.log(response)
 
-   }
+  }
   return (
     <div className="bod">
       <div className="container">
@@ -46,7 +46,7 @@ const Card: React.FC<CardProps>=({ imgsrc, name, type, expiry,inventoryId })=> {
                     Delete
                   </button>
                 </a>
-                <UpdateForm name={name} data={{expiry,inventoryId,name, type,}} />
+                <UpdateForm name={name} data={{ expiry, inventoryId, name, type, }} />
               </div>
             </div>
           </article>
@@ -56,4 +56,4 @@ const Card: React.FC<CardProps>=({ imgsrc, name, type, expiry,inventoryId })=> {
   );
 }
 
-export default Card;
+export default Card;

@@ -1,0 +1,284 @@
+
+
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+.container {
+    width: 100%;
+    padding: 0 1.5rem;
+    max-width: 144rem;
+    margin: 0 auto;
+}
+
+.w-120 {
+    max-width: 120rem;
+}
+
+
+.btn {
+    border-radius: .5rem;
+    padding: 1.2rem;
+}
+
+.hero {
+    margin: auto;
+    height: 100vh;
+}
+
+.hero__content {
+    display: flex;
+}
+
+.hero__text {
+    
+    margin-top: 4rem;
+    max-width: 50rem;
+}
+
+.hero__title {
+    font-size: 4rem;
+}
+
+.hero__description {
+    margin-top: 1rem !important;
+    padding-top: 0 ;
+    font-size: 1.7rem;
+    margin: 2.5rem 0 5rem;
+    color: #263238;
+}
+
+.btn__hero {
+    border: 1px solid #66BB6A;
+    color: #ffffff;
+    font-size: 1.8rem;
+    box-shadow: 1px 10px 30px -10px #66bb6a;
+
+    display: inline-block;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn__hero:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #66BB6A;
+    z-index: -2;
+}
+
+.btn__hero:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #ffffff;
+    transition: all .3s;
+    z-index: -1;
+}
+
+.btn__hero:hover {
+    color: #66BB6A;
+}
+
+.btn__hero:hover:before {
+    width: 100%;
+}
+
+.hero__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.hero__img img {
+    max-height: 100vh;
+    width: initial;
+}
+
+/*End Hero */
+/*Opportunities*/
+.opportunities {
+    position: relative;
+}
+
+.opportunities__img {
+    position: absolute;
+    left: -1.5rem;
+    top: -16rem;
+    z-index: -1;
+}
+
+.opportunities__img img {
+    max-height: 55rem;
+    max-width: 16rem;
+}
+
+.opportunities__content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5rem;
+    border-bottom: 2px solid #f7f7f7;
+    margin-bottom: 4rem;
+}
+
+.opportunities__head {
+    text-align: center;
+    max-width: 70rem;
+    margin: 0 auto 10rem;
+}
+
+.opportunities__title {
+    font-size: 3.6rem;
+    color: #000000;
+}
+
+.opportunities__description {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #263238;
+}
+
+.opportunities__body {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 2.5rem;
+    align-self: baseline;
+}
+
+.opportunity {
+    width: 30%;
+    background-color: #ffffff;
+    border-radius: .5rem;
+    filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
+    padding: 5rem 2.5rem 2.5rem;
+    transition: all 0.3s ease-out;
+}
+
+.opportunity.active {
+    background-color: #66BB6A;
+}
+
+.opportunity.active .opportunity__title,
+.opportunity.active .opportunity__description {
+    color: #ffffff;
+}
+
+.opportunity:hover {
+    transform: translateY(-2rem);
+}
+
+.opportunity__icon {
+    max-height: 5.6rem;
+    width: initial;
+}
+
+.opportunity__title {
+    font-size: 1.8rem;
+    color: #263238;
+    margin: 2.5rem 0;
+}
+
+.opportunity__description {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #263238;
+}
+
+
+@media screen and (max-width: 950px) {
+
+    /*Hero */
+    .hero__content {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero__img {
+        display: none;
+    }
+
+}
+@media screen and (max-width:375px) {
+    .opportunities__description {
+        margin-top: 8.5rem
+    }
+}
+@media screen and (max-width: 768px) {
+
+    /* Opportunities*/
+    .opportunity {
+        width: 100%;
+    }
+
+    /*End Opportunities*/
+    /*How Is Works*/
+    .form_progressbar {
+        grid-column-gap: 7rem;
+        justify-content: center;
+    }
+
+    .progressbar__step {
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+
+    .progressbar__step:not(:first-child)::before,
+    .progressbar__step:not(:first-child)::after {
+        width: 7rem;
+    }
+
+    .works__step__content {
+        flex-direction: column;
+    }
+
+    .works__step_title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    /*End How Is Works*/
+
+}
+
+@media screen and (max-width: 500px) {
+
+    /*Global*/
+    .opportunities__title {
+        font-size: 3rem;
+    }
+
+    /*Hero*/
+    .hero__title {
+        font-size: 3.2rem;
+    }
+
+    /*End Hero*/
+    /*Opportunities*/
+    .opportunities__img {
+        top: -8rem;
+    }
+
+    .opportunities__img img {
+        max-height: 40rem;
+        max-width: 10rem;
+    }
+
+    .opportunity__icon {
+        width: inherit;
+    }
+}
+

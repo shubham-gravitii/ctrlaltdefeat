@@ -1,9 +1,9 @@
-
+import MyHome from "./Hero/page";
 
 export default function Home() {
   return (
     <main className="">
-      shhjj
+      <MyHome />
     </main>
   );
 }
