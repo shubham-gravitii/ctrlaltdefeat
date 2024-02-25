@@ -10,28 +10,30 @@ export const authConfig = {
 		signIn: "/login",
 	},
 	callbacks: {
-		authorized({ auth, req }: any): boolean | Response {
+		authorized({ auth, request: { nextUrl } }: any): boolean | Response {
 			const isLoggedIn = !!auth?.user;
+			console.log(auth);
 
-			const isApiAuthRoute =
-				req.nextUrl.pathname.startsWith(apiAuthPrefix);
-			const isPublicRoute = publicRoutes.includes(req.nextUrl.pathname);
-			const isAuthRoute = authRoutes.includes(req.nextUrl.pathname);
+			const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
+			const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+			const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
+			console.log(2);
 			if (isApiAuthRoute) return true;
 
-			console.log(req);
-
+			console.log(3);
 			if (isAuthRoute) {
+				console.log(4);
 				if (isLoggedIn) {
+					console.log(5);
 					return Response.redirect(
-						new URL(DEFAULT_LOGIN_REDIRECT, req.nextUrl)
+						new URL(DEFAULT_LOGIN_REDIRECT, nextUrl)
 					);
 				}
 				return true;
 			}
 			if (!isLoggedIn && !isPublicRoute) {
-				return Response.redirect(new URL("/login", req.nextUrl));
+				return Response.redirect(new URL("/login", nextUrl));
 			}
 			return true;
 		},
