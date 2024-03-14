@@ -15,6 +15,7 @@ import { BiSolidError } from "react-icons/bi"
 // import LoaderContext from "../Context/LoaderContext";
 import "./SignUp.css";
 import Button from './SubmitButton';
+import Image from "next/image";
 
 export default function SignUp() {
   const [isLoading, setisLoading] = useState(false)
@@ -71,7 +72,7 @@ export default function SignUp() {
           theme="dark"
 
         />
-        <img src={bgSignIn.src} alt="" className="bgLoginImg" />
+        <Image sizes="100vw" src={bgSignIn.src} alt="" className="bgLoginImg" />
 
         <div className="bg-white  p-5 formSignUp  flex flex-col   overflow-hidden ">
           <div>

@@ -3,6 +3,7 @@ import React from "react";
 import "./styles.css";
 import { deleteInventory } from "@/lib/actions/inventory.action";
 import UpdateForm from "@/components/UpdateInfo";
+import Image from "next/image";
 
 interface CardProps {
   imgsrc: string,
@@ -10,10 +11,10 @@ interface CardProps {
   inventoryId: string,
   type: string,
   expiry: string,
-  quantity:number | null
+  quantity: number | null
 }
 
-const Card: React.FC<CardProps> = ({ imgsrc, name, type, expiry, inventoryId ,quantity}) => {
+const Card: React.FC<CardProps> = ({ imgsrc, name, type, expiry, inventoryId, quantity }) => {
   const handleDelete = async () => {
     const response = await deleteInventory({ inventoryId: inventoryId })
     // console.log(response)
@@ -24,25 +25,22 @@ const Card: React.FC<CardProps> = ({ imgsrc, name, type, expiry, inventoryId ,qu
       <div className="container">
         <main className="grid">
           <article className="card">
-            <img
+            <Image
               src={imgsrc}
               alt="Sample photo"
-              style={{
-                
-                height:"200px"
-              }}
+              height="200"
             />
             <div className="text">
               <div>
                 <h3>Name: {name}</h3>
                 <h3>Type: {type}</h3>
                 <h3>Puchase Date: {expiry}</h3>
-                {quantity!=0 && 
-                <>
-                <h3>Best Before: {}</h3>
-                
-                <h3>Quantity: {quantity}</h3>
-                </>
+                {quantity != 0 &&
+                  <>
+                    <h3>Best Before: { }</h3>
+
+                    <h3>Quantity: {quantity}</h3>
+                  </>
                 }
               </div>
               <div className="btn">

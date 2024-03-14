@@ -8,4 +8,4 @@ import oats from './oats.jpeg'
 import rice from './rice.jpeg'
 import tractor from './tractor.png'
 import harvester from './harvestor.jpg'
-export default {wheat ,barley,gram,linseed,maize,mustard,oats,rice , tractor,harvester};
+export { wheat, barley, gram, linseed, maize, mustard, oats, rice, tractor, harvester };

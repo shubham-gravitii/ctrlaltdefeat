@@ -7,6 +7,7 @@ import MyButton from "@/components/SubmitButton";
 import { inventoryAnalysis } from "@/lib/actions/analysis.action";
 import { useState } from "react";
 import { BiSolidError } from "react-icons/bi";
+import Image from 'next/image';
 
 
 
@@ -41,7 +42,7 @@ export default function page() {
 
     return (
         <div className='relative'>
-            <img src={bgSignIn.src} alt="" className="bgLoginImg" />
+            <Image src={bgSignIn.src} sizes='100vw' alt="" className="bgLoginImg" />
 
             <div className='absolute top-12 flex flex-col justify-center items-center w-[100vw]'>
                 <h1 className='text-5xl '>Market Place</h1>

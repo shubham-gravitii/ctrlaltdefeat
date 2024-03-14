@@ -11,7 +11,7 @@ const initialState = {
     error: false,
     message: '',
 }
-export default function page() {
+export default function Page() {
     const [state, clientAction] = useFormState(inventoryAnalysis, initialState);
   return (
     <div>

@@ -1,9 +1,9 @@
-import {
-	publicRoutes,
-	apiAuthPrefix,
-	DEFAULT_LOGIN_REDIRECT,
-	authRoutes,
-} from "@/lib/auth/route";
+const publicRoutes = ["/"];
+
+const authRoutes = ["/login", "/register"];
+
+const apiAuthPrefix = "/api/auth";
+const DEFAULT_LOGIN_REDIRECT = "/";
 
 export const authConfig = {
 	pages: {

@@ -4,16 +4,13 @@ import { buttonVariants } from "../ui/button";
 import NavMenu from "./NavMenu";
 import { useCurrentRole } from "@/hooks/use-current-role";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { logout } from '@/lib/actions/auth.action';
+import { logout } from "@/lib/actions/auth.action";
 
 
 
 export default function NavBar() {
-    const role = useCurrentRole()
-    const user = useCurrentUser()
-    // const role = 'user'
-    // const user = 'l'
-    // console.log(role, user);
+    const role = useCurrentRole();
+    const user = useCurrentUser();
 
     return (
         <nav className="w-full shadow-md relative z-10">

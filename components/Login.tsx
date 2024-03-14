@@ -9,6 +9,7 @@ import Button from './SubmitButton'
 import { BiSolidError } from "react-icons/bi"
 
 import 'react-toastify/dist/ReactToastify.css';
+import Image from "next/image";
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
   const [message, clientAction] = useFormState(loginWithCredentials, undefined);
@@ -33,7 +34,7 @@ export default function Login() {
           theme="dark"
 
         />
-        <img src={bgSignIn.src} alt="" className="bgLoginImg" />
+        <Image fill={true} src={bgSignIn.src} alt="" className="bgLoginImg" />
         <div className="formLogin bg-white flex flex-col justify-center  ">
           <div className=" formLoginInside  w-full p-[20px] m-auto  rounded-md shadow-md lg:max-w-xl">
             <h1 className="text-3xl font-semibold text-center text-purple-700 ">
@@ -94,7 +95,7 @@ export default function Login() {
 
             <p className="mt-8 text-xs font-light text-center text-black">
               {" "}
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <a
                 href="/register"
                 className="font-medium text-purple-600 hover:underline"

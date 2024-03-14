@@ -16,7 +16,7 @@ const states = ["Bihar", "Gujarat", "Maharashtra", "Punjab", "Tamil Nadu"]
 const landTypes = ["Alluvial soils", "Black soils", "Red soils", "Laterite soils"]
 
 
-export default function page() {
+export default function Page() {
 
     const [state, clientAction] = useFormState(inventoryAnalysis, initialState);
     // console.log(state);

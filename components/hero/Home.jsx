@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./styles.css";
 const Home = () => {
   return (
@@ -16,14 +17,14 @@ const Home = () => {
               </p>
             </div>
             <div className="hero__img">
-              <img src="/assets/hero.jpg" alt="" />
+              <Image width="300" height="300" src="/assets/hero.jpg" alt="" />
             </div>
           </div>
         </section>
 
         <section className="opportunities">
           <div className="opportunities__img">
-            <img src="/assets/leaf.jpg" alt="" />
+            <Image width="300" height="300" src="/assets/leaf.jpg" alt="" />
           </div>
           <div className="opportunities__content w-105">
             <div className="opportunities__head">
@@ -40,7 +41,8 @@ const Home = () => {
             <div className="flex flex-wrap">
               <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
                 <div className="relative">
-                  <img
+                  <Image
+                    width="300" height="300"
                     src="https://i.postimg.cc/QtyYkbxp/pexels-andrea-piacquadio-927022.jpg"
                     alt=""
                     className="relative z-40 object-cover w-full h-96 lg:rounded-tr-[80px] lg:rounded-bl-[80px] rounded"

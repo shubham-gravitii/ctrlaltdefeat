@@ -3,29 +3,33 @@ import React, { useState } from 'react'
 import bgSignIn from "@/assests/login.svg";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css'
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { addInventory } from '@/lib/actions/inventory.action';
-import { InventoryType } from '@prisma/client';
+import Image from 'next/image';
+
+const initialFormState = {
+    "type": "",
+    "name": "",
+    "expiery": new Date(),
+    "quantity": "0",
+    "url": "images.jpg",
+    "createdById": ""
+}
+
 export default function AddItems() {
-    const user=useCurrentUser()
-    console.log(user)
-    if(!user){
+    const user = useCurrentUser()
+    const [isLoading, setisLoading] = useState(false)
+    const [formState, setFormState] = useState(initialFormState);
+
+
+    if (!user) {
         return;
     }
-    const [isLoading, setisLoading] = useState(false)
-    const initialFormState = {
-        "type": "",
-        "name": "",
-        "expiery": new Date(),
-        "quantity": "0",
-        "url": "images.jpg",
-        "createdById": user?.id || "65dabc6567f5c770a394eb2b"
-    }
-    const [formState, setFormState] = useState(initialFormState)
+
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         if (name === "type") {
@@ -41,10 +45,10 @@ export default function AddItems() {
             setFormState({ ...formState, [name]: value });
         }
     }
-    const handleFormSubmit = async(e: any) => {
+    const handleFormSubmit = async (e: any) => {
         e.preventDefault()
         setisLoading(true)
-        const inventory = await addInventory({...formState,type: 'crop'?"SEED":"TOOL", quantity:parseInt(formState.quantity), expiery: formState.expiery.toISOString()})
+        const inventory = await addInventory({ ...formState, type: 'crop' ? "SEED" : "TOOL", quantity: parseInt(formState.quantity), expiery: formState.expiery.toISOString() })
         console.log(formState)
         // toast("succesfully")
         // console.log(formState)
@@ -71,7 +75,7 @@ export default function AddItems() {
                         theme="dark"
 
                     />
-                    <img src={bgSignIn.src} alt="" className="bgLoginImg" />
+                    <Image sizes='100vw' src={bgSignIn.src} alt="" className="bgLoginImg" />
 
                     <div className="bg-white p-5  formSignUp  flex flex-col   overflow-hidden absolute rounded-xl">
                         <div>
